@@ -1,0 +1,59 @@
+.movie-app__search__search-result-field {
+    display: flex;
+    width: calc(100% - 40px);
+    flex-direction: row;
+    background-color: #010a26;
+    position: absolute;
+    margin-top: 60px;
+    padding: 5px 20px;
+    .navigation {
+        button {
+            position: absolute;
+            top: 45%;
+            z-index: 1;
+            padding: 5px;
+            font-size: 1rem;
+            background-color: #c1c7d9;
+            border-radius: 5px;
+            color: #010a26;
+            opacity: 0.5;
+            &:hover {
+                opacity: 0.8;
+            }
+            &:focus {
+                opacity: 0.9;
+            }
+            &:first-of-type {
+                left: 10px;
+            }
+
+            &:last-of-type {
+                right: 10px;
+            }
+        }
+    }
+    .carousel {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    ::-webkit-scrollbar {
+        background-color: #010a26;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #c1c7d9;
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: darken(#c1c7d9, 10%);
+    }
+}
+@media screen and (max-width: 880px) {
+    .movie-app__search__search-result-field {
+        .navigation {
+            visibility: hidden;
+        }
+    }
+}

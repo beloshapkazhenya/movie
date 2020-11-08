@@ -1,0 +1,68 @@
+@keyframes move {
+    from {
+        bottom: -6px;
+    }
+    to {
+        bottom: 0;
+    }
+}
+.movie-card {
+    text-align: center;
+    position: relative;
+    margin: 5px 10px;
+    border: 1px solid #010a26;
+    img {
+        width: 300px;
+        height: 450px;
+    }
+    &__description {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        padding: 10px 0;
+        background: #010a26dc;
+        color: #c1c7d9;
+        visibility: hidden;
+        h2 {
+            margin: 0 5px;
+        }
+    }
+    &:hover {
+        border-color: #c1c7d9;
+        box-shadow: 0 0 6px #c1c7d9;
+        .movie-card__description {
+            visibility: visible;
+            animation: move 0.1s ease-in-out;
+            animation-iteration-count: 1;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .movie-card {
+        img {
+            width: 250px;
+            height: 400px;
+        }
+    }
+}
+@media screen and (max-width: 880px) {
+    .movie-card {
+        border-color: #c1c7d9;
+        box-shadow: 0 0 6px #c1c7d9;
+        img {
+            width: 200px;
+            height: 300px;
+        }
+        &__description {
+            visibility: visible;
+            font-size: 12px;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .movie-card {
+        img {
+        }
+    }
+}

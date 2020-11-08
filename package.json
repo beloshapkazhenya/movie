@@ -2,7 +2,7 @@
   "name": "movie-library",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://beloshapkazhenya.github.io/movie-library/",
+  "homepage": "https://beloshapkazhenya.github.io/movie/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
-    "predeploy": ""
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

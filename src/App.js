@@ -38,7 +38,7 @@ function App() {
 
 
   let searchFunction = () => {
-    axios.get(`http://www.omdbapi.com/?apikey=ea6e1810&s=${searchValue}&page=${searchPage}`).then(({ data }) => {
+    axios.get(`https://www.omdbapi.com/?apikey=ea6e1810&s=${searchValue}&page=${searchPage}`).then(({ data }) => {
       if (data.Response === "True") {
         setSearchResult([...searchResult, ...data.Search])
         setResponse(data.Response)

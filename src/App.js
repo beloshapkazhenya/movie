@@ -20,7 +20,7 @@ function App() {
 
 
   const setMovieData = (imdbID) => {
-    axios.get(`http://www.omdbapi.com/?apikey=ea6e1810&i=${imdbID}`).then(({ data }) => { setMovie(data) })
+    axios.get(`https://www.omdbapi.com/?apikey=ea6e1810&i=${imdbID}`).then(({ data }) => { setMovie(data) })
     searchVisibilaty()
     setSearchValue('')
     setSearchResult([])

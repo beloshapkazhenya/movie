@@ -1,13 +1,19 @@
 import React from 'react';
 
 import defaultPoster from './../../assets/img/poster.png'
+import addFavorites from './../../assets/img/favorites.svg'
+import inFavorites from './../../assets/img/infavorites.svg'
 
 import './Movie.scss';
 
-const Movie = ({ description }) => {
+const Movie = ({ description, favoriteListAdd }) => {
     return (
         <div className='movie-app__movie-description-field'>
-            {description.Title && <h1>{description.Title}</h1>}
+            <div className='movie-app__movie-description-field__title'>
+                <h1>{description.Title}</h1>
+                <img className='in-favorite' onClick={() => favoriteListAdd(description)} src={inFavorites} alt="Favorite"></img>
+            </div>
+
             <div className='movie-app__movie-description-field__information'>
                 {description.Poster && <img className='movie-app__movie-description-field__information__poster' src={description.Poster !== "N/A" ? description.Poster : defaultPoster} alt='Poster'></img>}
                 <div className='movie-app__movie-description-field__information__text-information'>

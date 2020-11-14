@@ -6,16 +6,23 @@
     font-size: 24px;
     line-height: 28px;
     margin: 0 30px;
-    h1 {
-        margin-top: 20px;
-        font-size: 30px;
-        line-height: 42px;
+    &__title {
         display: flex;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 20px;
-
-        color: #344059;
+        flex-direction: row;
+        h1 {
+            margin-top: 20px;
+            font-size: 30px;
+            line-height: 42px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #344059;
+        }
+        img {
+            margin-left: 10px;
+            cursor: pointer;
+        }
     }
 
     &__information {
@@ -126,6 +133,7 @@
         color: lighten(black, 30%);
     }
 }
+
 @media screen and (max-width: 1200px) {
     .movie-app__movie-description-field {
         font-size: 18px;
@@ -139,10 +147,13 @@
     .movie-app__movie-description-field {
         font-size: 14px;
         line-height: 16px;
-        h1 {
-            font-size: 25px;
-            line-height: 37px;
+        &__title {
+            h1 {
+                font-size: 25px;
+                line-height: 37px;
+            }
         }
+
         &__information {
             &__poster {
                 width: 200px;
@@ -162,18 +173,23 @@
     .movie-app__movie-description-field {
         font-size: 12px;
         line-height: 14px;
-        h1 {
-            font-size: 20px;
-            line-height: 32px;
+        &__title {
+            h1 {
+                font-size: 20px;
+                line-height: 32px;
+            }
         }
     }
 }
 @media screen and (max-width: 460px) {
     .movie-app__movie-description-field {
-        h1 {
-            font-size: 16px;
-            line-height: 25px;
+        &__title {
+            h1 {
+                font-size: 16px;
+                line-height: 25px;
+            }
         }
+
         &__information {
             flex-direction: column;
             align-items: center;

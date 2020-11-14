@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import Logo from './../../assets/img/Logo.svg'
 
@@ -13,7 +14,7 @@ const Header = ({ searchVisibilaty }) => {
                 {/*<li className='movie-app__header__menu__menu-button'>Top</li>*/}
                 {/*<li className='movie-app__header__menu__menu-button'>Proposed</li>*/}
                 <li onClick={searchVisibilaty} className='movie-app__header__menu__menu-button'>Search</li>
-                {/*<li className='movie-app__header__menu__menu-button'>Favorites</li>*/}
+                <Link to="/favorites" ><li className='movie-app__header__menu__menu-button'>Favorites</li></Link>
                 {/*<li className='movie-app__header__menu__menu-button'>Profile</li>*/}
             </ul>
         </header>

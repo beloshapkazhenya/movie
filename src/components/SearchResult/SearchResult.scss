@@ -6,11 +6,12 @@
     position: absolute;
     margin-top: 60px;
     padding: 5px 20px;
+    z-index: 2;
     .navigation {
         button {
             position: absolute;
             top: 45%;
-            z-index: 1;
+            z-index: 2;
             padding: 5px;
             font-size: 1rem;
             background-color: #c1c7d9;

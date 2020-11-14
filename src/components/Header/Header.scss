@@ -14,7 +14,6 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-
         &__menu-button {
             font-family: Lobster;
             font-style: normal;
@@ -32,7 +31,7 @@
             border: 1px solid #010a26;
             border-radius: 5px;
             &:hover {
-                border: 1px solid white;
+                border: 1px solid darken(#c1c7d9, 40%);
             }
         }
     }

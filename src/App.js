@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Route } from "react-router-dom";
 import axios from 'axios'
 
 import Header from './components/Header/Header';
 import Movie from './components/Movie/Movie';
 import Search from './components/Search/Search';
 import Popup from './components/Popup/Popup';
-
+import Home from './components/Home/Home';
+import Favorites from './components/Favorites/Favorites.jsx';
 
 function App() {
   const [visibleSearch, setVisibleSearch] = useState(false);
@@ -15,9 +17,7 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [response, setResponse] = useState('');
   const [searchPage, setSearchPage] = useState(1);
-
-
-
+  const [favoriteList, setFavoriteList] = useState([])
 
   const setMovieData = (imdbID) => {
     axios.get(`https://www.omdbapi.com/?apikey=ea6e1810&i=${imdbID}`).then(({ data }) => { setMovie(data) })
@@ -54,6 +54,10 @@ function App() {
     searchResult.length = 0
     searchFunction();
   }
+  let favoriteListAdd = (addMovie) => {
+    setFavoriteList([...favoriteList, addMovie])
+  }
+
   let nextSearchPage = () => {
     searchFunction()
   }
@@ -64,6 +68,9 @@ function App() {
   return (
     <div className="movie-app">
       <Header searchVisibilaty={searchVisibilaty} />
+      <Route exact path="/">
+        <Home />
+      </Route>
       {visiblePopup && <Popup popupVisibilaty={popupVisibilaty} />}
       {visibleSearch && <Search
         setSearchValue={setSearchValue}
@@ -73,7 +80,12 @@ function App() {
         nextSearchPage={nextSearchPage}
         response={response}
         setMovieData={setMovieData} />}
-      <Movie description={movie} />
+      <Route path='/movie-description'>
+        <Movie description={movie} favoriteListAdd={favoriteListAdd} />
+      </Route>
+      <Route path='/favorites'>
+        <Favorites setMovieData={setMovieData} favoriteList={favoriteList} />
+      </Route>
 
     </div>
   );

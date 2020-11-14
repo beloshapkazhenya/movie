@@ -20,7 +20,7 @@ const SearchResult = ({ searchResult, setMovieData, searchValue, nextSearchPage 
         if (slider.current.scrollWidth - (slider.current.scrollLeft + slider.current.clientWidth) < slider.current.clientWidth && !loading) {
             setLoading(true)
             nextSearchPage();
-            setTimeout(() => setLoading(false), 2000)
+            setTimeout(() => setLoading(false), 1000)
         }
     }
 

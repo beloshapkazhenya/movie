@@ -1,0 +1,98 @@
+.movie-app__profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+    position: relative;
+    &__avatar-field {
+        position: relative;
+        width: 300px;
+        height: 300px;
+
+        margin-right: 30px;
+
+        cursor: pointer;
+        img:first-of-type {
+            position: absolute;
+            border-radius: 50%;
+            width: 90%;
+            height: 90%;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+            box-shadow: 0px 0px 44px -10px #010a26;
+        }
+        img:last-of-type {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            width: 20px;
+            visibility: hidden;
+            opacity: 0.2;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        &:hover {
+            img:last-of-type {
+                visibility: visible;
+            }
+        }
+    }
+    &__username {
+        display: flex;
+        flex-direction: row;
+        span {
+            font-family: Lobster;
+            font-size: 24px;
+            line-height: 14px;
+            display: flex;
+            align-items: center;
+            width: 90%;
+            text-align: center;
+            padding-top: 5px;
+        }
+        img {
+            visibility: hidden;
+            opacity: 0.2;
+            margin-left: 10px;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        &:hover {
+            img {
+                visibility: visible;
+            }
+        }
+    }
+    &__popup {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #010a26;
+        border-radius: 10px;
+        color: #c1c7d9;
+        padding: 10px;
+        input {
+            background-color: #010a26;
+            color: #c1c7d9;
+            border: none;
+            &::-webkit-input-placeholder {
+                color: #c1c7d9;
+                opacity: 0.7;
+            }
+        }
+        button {
+            background-color: #010a26;
+            color: #c1c7d9;
+            border: 1px solid darken(#c1c7d9, 40%);
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+}

@@ -10,12 +10,10 @@ const Header = ({ searchVisibilaty }) => {
         <header className='movie-app__header'>
             <img src={Logo} alt='Movie library'></img>
             <ul className='movie-app__header__menu'>
-                {/*<li className='movie-app__header__menu__menu-button'>Main</li>*/}
-                {/*<li className='movie-app__header__menu__menu-button'>Top</li>*/}
-                {/*<li className='movie-app__header__menu__menu-button'>Proposed</li>*/}
+                <Link to="/"><li className='movie-app__header__menu__menu-button'>Main</li></Link>
                 <li onClick={searchVisibilaty} className='movie-app__header__menu__menu-button'>Search</li>
                 <Link to="/favorites" ><li className='movie-app__header__menu__menu-button'>Favorites</li></Link>
-                {/*<li className='movie-app__header__menu__menu-button'>Profile</li>*/}
+                <Link to="/profile"><li className='movie-app__header__menu__menu-button'>Profile</li></Link>
             </ul>
         </header>
     )

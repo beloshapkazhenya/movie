@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from "react-router-dom";
-import axios from 'axios'
-
-import Header from './components/Header/Header';
-import Movie from './components/Movie/Movie';
-import Search from './components/Search/Search';
-import Popup from './components/Popup/Popup';
-import Home from './components/Home/Home';
-import Favorites from './components/Favorites/Favorites.jsx';
+import { API } from './state/api'
+import { Header, Movie, Search, Popup, Home, Favorites, Profile } from './components/components'
+import defaultAva from './assets/img/base avatar.png'
 
 function App() {
   const [visibleSearch, setVisibleSearch] = useState(false);
@@ -19,14 +14,18 @@ function App() {
   const [searchPage, setSearchPage] = useState(1);
   const [favoriteList, setFavoriteList] = useState([])
 
+
+  //просмотр данных фильма
   const setMovieData = (imdbID) => {
-    axios.get(`https://www.omdbapi.com/?apikey=ea6e1810&i=${imdbID}`).then(({ data }) => { setMovie(data) })
+    API.getMovieById(imdbID).then(data => setMovie(data))
     searchVisibilaty()
     setSearchValue('')
     setSearchResult([])
     setResponse('')
     setSearchPage(1)
   }
+
+  //появление/скрытие полей
 
   let searchVisibilaty = () => {
     setVisibleSearch(!visibleSearch)
@@ -36,9 +35,9 @@ function App() {
     setVisiblePopup(!visiblePopup)
   }
 
-
+  //поиск фильма
   let searchFunction = () => {
-    axios.get(`https://www.omdbapi.com/?apikey=ea6e1810&s=${searchValue}&page=${searchPage}`).then(({ data }) => {
+    API.getSearchList(searchValue, searchPage).then(({ data }) => {
       if (data.Response === "True") {
         setSearchResult([...searchResult, ...data.Search])
         setResponse(data.Response)
@@ -54,9 +53,6 @@ function App() {
     searchResult.length = 0
     searchFunction();
   }
-  let favoriteListAdd = (addMovie) => {
-    setFavoriteList([...favoriteList, addMovie])
-  }
 
   let nextSearchPage = () => {
     searchFunction()
@@ -64,12 +60,55 @@ function App() {
   useEffect(() => {
     setSearchPage(1)
   }, [searchValue])
+  //действия с избранным
+  let favoriteListAdd = (addMovie) => {
+    setFavoriteList([...favoriteList, addMovie])
+  }
+  //данные профиля
+
+  let userInfo = {
+    username: "Phoenix",
+    avatar: defaultAva
+  }
+  const [avatarPopup, setAvatarPopup] = useState(false);
+  const [usernamePopup, setUsernamePopup] = useState(false);
+
+  const [newAvatarPath, setNewAvatarPath] = useState()
+  const [userAvatar, setUserAvatar] = useState(userInfo.avatar)
+
+
+  const [newUsername, setNewUsername] = useState()
+  const [username, setUsername] = useState(userInfo.username)
+
+  let changeAvatarPopup = () => {
+    setUsernamePopup(false)
+    setNewUsername()
+    setAvatarPopup(!avatarPopup)
+  }
+  let changeUsernamePopup = () => {
+    setAvatarPopup(false)
+    setNewAvatarPath()
+    setUsernamePopup(!usernamePopup)
+  }
+
+  let changeAvatar = () => {
+    setUserAvatar(newAvatarPath)
+    userInfo.avatar = newAvatarPath
+    changeAvatarPopup()
+  }
+  let changeUsername = () => {
+    setUsername(newUsername)
+    userInfo.avatar = newUsername
+    changeUsernamePopup()
+  }
+
+
 
   return (
     <div className="movie-app">
       <Header searchVisibilaty={searchVisibilaty} />
       <Route exact path="/">
-        <Home />
+        <Home userInfo={userInfo} />
       </Route>
       {visiblePopup && <Popup popupVisibilaty={popupVisibilaty} />}
       {visibleSearch && <Search
@@ -85,6 +124,22 @@ function App() {
       </Route>
       <Route path='/favorites'>
         <Favorites setMovieData={setMovieData} favoriteList={favoriteList} />
+      </Route>
+      <Route path='/profile'>
+        <Profile
+          changeAvatarPopup={changeAvatarPopup}
+          avatarPopup={avatarPopup}
+          userAvatar={userAvatar}
+          setNewAvatarPath={setNewAvatarPath}
+          newAvatarPath={newAvatarPath}
+          changeAvatar={changeAvatar}
+          newUsername={newUsername}
+          setNewUsername={setNewUsername}
+          username={username}
+          usernamePopup={usernamePopup}
+          changeUsername={changeUsername}
+          changeUsernamePopup={changeUsernamePopup}
+        />
       </Route>
 
     </div>

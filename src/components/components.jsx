@@ -1,0 +1,7 @@
+export { default as Header } from './Header/Header'
+export { default as Movie } from './Movie/Movie'
+export { default as Search } from './Search/Search'
+export { default as Popup } from './Popup/Popup'
+export { default as Home } from './Home/Home'
+export { default as Favorites } from './Favorites/Favorites.jsx'
+export { default as Profile } from './Profile/Profile'

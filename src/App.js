@@ -15,14 +15,18 @@ function App() {
   const [favoriteList, setFavoriteList] = useState([])
 
 
-  //просмотр данных фильма
-  const setMovieData = (imdbID) => {
-    API.getMovieById(imdbID).then(data => setMovie(data))
-    searchVisibilaty()
+  const clearSearch = () => {
+    setVisibleSearch(false)
     setSearchValue('')
     setSearchResult([])
     setResponse('')
     setSearchPage(1)
+  }
+
+  //просмотр данных фильма
+  const setMovieData = (imdbID) => {
+    API.getMovieById(imdbID).then(data => setMovie(data))
+    clearSearch()
   }
 
   //появление/скрытие полей
@@ -67,7 +71,7 @@ function App() {
   //данные профиля
 
   let userInfo = {
-    username: "Phoenix",
+    username: "Username",
     avatar: defaultAva
   }
   const [avatarPopup, setAvatarPopup] = useState(false);
@@ -106,7 +110,7 @@ function App() {
 
   return (
     <div className="movie-app">
-      <Header searchVisibilaty={searchVisibilaty} />
+      <Header searchVisibilaty={searchVisibilaty} clearSearch={clearSearch} />
       <Route exact path="/">
         <Home userInfo={userInfo} />
       </Route>

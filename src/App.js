@@ -70,19 +70,16 @@ function App() {
   }
   //данные профиля
 
-  let userInfo = {
-    username: "Username",
-    avatar: defaultAva
-  }
+
   const [avatarPopup, setAvatarPopup] = useState(false);
   const [usernamePopup, setUsernamePopup] = useState(false);
 
   const [newAvatarPath, setNewAvatarPath] = useState()
-  const [userAvatar, setUserAvatar] = useState(userInfo.avatar)
+  const [userAvatar, setUserAvatar] = useState(localStorage.avatar ? localStorage.avatar : defaultAva)
 
 
   const [newUsername, setNewUsername] = useState()
-  const [username, setUsername] = useState(userInfo.username)
+  const [username, setUsername] = useState(localStorage.username ? localStorage.username : 'Username')
 
   let changeAvatarPopup = () => {
     setUsernamePopup(false)
@@ -97,12 +94,12 @@ function App() {
 
   let changeAvatar = () => {
     setUserAvatar(newAvatarPath)
-    userInfo.avatar = newAvatarPath
+    localStorage.setItem('avatar', newAvatarPath)
     changeAvatarPopup()
   }
   let changeUsername = () => {
     setUsername(newUsername)
-    userInfo.avatar = newUsername
+    localStorage.setItem('username', newUsername)
     changeUsernamePopup()
   }
 
@@ -112,7 +109,7 @@ function App() {
     <div className="movie-app">
       <Header searchVisibilaty={searchVisibilaty} clearSearch={clearSearch} />
       <Route exact path="/">
-        <Home userInfo={userInfo} />
+        <Home username={localStorage.username} />
       </Route>
       {visiblePopup && <Popup popupVisibilaty={popupVisibilaty} />}
       {visibleSearch && <Search

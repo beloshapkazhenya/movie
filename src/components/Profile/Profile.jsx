@@ -4,7 +4,6 @@ import './Profile.scss';
 
 import Avatar from './Avatar'
 
-import edit from './../../assets/img/edit.svg'
 
 const Profile = ({ changeAvatarPopup, avatarPopup, setNewAvatarPath, newAvatarPath, changeAvatar, userAvatar, newUsername, setNewUsername, username, usernamePopup, changeUsernamePopup, changeUsername }) => {
 
@@ -16,8 +15,7 @@ const Profile = ({ changeAvatarPopup, avatarPopup, setNewAvatarPath, newAvatarPa
                 <button onClick={changeAvatar}>Change</button>
             </div>}
             <div className="movie-app__profile__username">
-                <span>{username}</span>
-                <img src={edit} alt="Edit" onClick={() => changeUsernamePopup()} />
+                <span onClick={() => changeUsernamePopup()} >{username}</span>
             </div>
             {usernamePopup && <div className='movie-app__profile__popup'>
                 <input value={newUsername} placeholder='How can I call you?' onChange={e => setNewUsername(e.target.value)} type="text"></input>

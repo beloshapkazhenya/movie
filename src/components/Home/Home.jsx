@@ -2,9 +2,10 @@ import React from 'react';
 
 import './Home.scss';
 
-const Home = ({ userInfo }) => {
+const Home = ({ username }) => {
 
-    if (userInfo.username === "Username") {
+    console.log(username)
+    if (username === "Username") {
         return (
             <div className="movie-app__home">
                 <div className="movie-app__home__text-block">
@@ -17,7 +18,7 @@ const Home = ({ userInfo }) => {
         return (
             <div className="movie-app__home">
                 <div className="movie-app__home__text-block">
-                    <span>Hello, {userInfo.username} !!!</span>
+                    <span>Hello, {username} !!!</span>
                     <span>Do you want to learn something new about films?</span>
                 </div>
             </div>

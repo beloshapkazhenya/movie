@@ -6,43 +6,32 @@
     position: relative;
     &__avatar-field {
         position: relative;
-        width: 300px;
-        height: 300px;
-
+        width: 150px;
+        height: 150px;
         margin-right: 30px;
-
         cursor: pointer;
-        img:first-of-type {
+        img {
             position: absolute;
             border-radius: 50%;
             width: 90%;
             height: 90%;
             left: 50%;
             top: 50%;
-            margin-left: -150px;
-            margin-top: -150px;
+            margin-left: -75px;
+            margin-top: -75px;
             box-shadow: 0px 0px 44px -10px #010a26;
         }
-        img:last-of-type {
-            position: absolute;
-            right: 5%;
-            top: 5%;
-            width: 20px;
-            visibility: hidden;
-            opacity: 0.2;
-            &:hover {
-                opacity: 1;
-            }
-        }
         &:hover {
-            img:last-of-type {
-                visibility: visible;
+            img {
+                box-shadow: 0px 0px 46px -8px lighten($color: #010a26, $amount: 10);
             }
         }
     }
     &__username {
         display: flex;
         flex-direction: row;
+        margin-top: auto;
+        margin-bottom: auto;
         span {
             font-family: Lobster;
             font-size: 24px;
@@ -52,18 +41,11 @@
             width: 90%;
             text-align: center;
             padding-top: 5px;
-        }
-        img {
-            visibility: hidden;
-            opacity: 0.2;
-            margin-left: 10px;
-            &:hover {
-                opacity: 1;
-            }
+            cursor: pointer;
         }
         &:hover {
-            img {
-                visibility: visible;
+            span {
+                text-shadow: 0px 0px 2px lighten($color: #010a26, $amount: 10);
             }
         }
     }

@@ -11,8 +11,7 @@ const Avatar = ({ userAvatar, changeAvatarPopup }) => {
     }, [userAvatar])
     return (
         <div className='movie-app__profile__avatar-field'>
-            <img src={avatar} alt="Here must be avatar"></img>
-            <img src={edit} alt="Edit" onClick={() => changeAvatarPopup()}></img>
+            <img src={avatar} alt="Here must be avatar" onClick={() => changeAvatarPopup()}></img>
         </div>
     )
 }

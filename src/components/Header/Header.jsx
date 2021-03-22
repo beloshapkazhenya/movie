@@ -11,7 +11,6 @@ const Header = ({ searchVisibilaty, clearSearch }) => {
             <img src={Logo} alt='Movie library'></img>
             <ul className='movie-app__header__menu'>
                 <li onClick={searchVisibilaty} className='movie-app__header__menu__menu-button'>Search</li>
-                <Link to="/favorites" ><li className='movie-app__header__menu__menu-button' onClick={() => clearSearch()}>Favorites</li></Link>
                 <Link to="/profile"><li className='movie-app__header__menu__menu-button' onClick={() => clearSearch()}>Profile</li></Link>
             </ul>
         </header>

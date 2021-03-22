@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from "react-router-dom";
 import { API } from './state/api'
-import { Header, Movie, Search, Popup, Home, Favorites, Profile } from './components/components'
+import { Header, Movie, Search, Popup, Home, Profile } from './components/components'
 import defaultAva from './assets/img/base avatar.png'
 
 function App() {
@@ -83,12 +83,12 @@ function App() {
 
   let changeAvatarPopup = () => {
     setUsernamePopup(false)
-    setNewUsername()
+    setNewAvatarPath()
     setAvatarPopup(!avatarPopup)
   }
   let changeUsernamePopup = () => {
     setAvatarPopup(false)
-    setNewAvatarPath()
+    setNewUsername()
     setUsernamePopup(!usernamePopup)
   }
 
@@ -103,7 +103,32 @@ function App() {
     changeUsernamePopup()
   }
 
+  const profileActions = {
+    changeAvatarPopup,
+    avatarPopup,
+    userAvatar,
+    setNewAvatarPath,
+    newAvatarPath,
+    changeAvatar,
+    newUsername,
+    setNewUsername,
+    username,
+    usernamePopup,
+    changeUsername,
+    changeUsernamePopup,
+    setMovieData,
+    favoriteList
+  }
 
+  const searchActions = {
+    setSearchValue,
+    searchValue,
+    searchButtonFunction,
+    searchResult,
+    nextSearchPage,
+    response,
+    setMovieData
+  }
 
   return (
     <div className="movie-app">
@@ -113,33 +138,13 @@ function App() {
       </Route>
       {visiblePopup && <Popup popupVisibilaty={popupVisibilaty} />}
       {visibleSearch && <Search
-        setSearchValue={setSearchValue}
-        searchValue={searchValue}
-        searchButtonFunction={searchButtonFunction}
-        searchResult={searchResult}
-        nextSearchPage={nextSearchPage}
-        response={response}
-        setMovieData={setMovieData} />}
+        searchActions={searchActions} />}
       <Route path='/movie-description'>
         <Movie description={movie} favoriteListAdd={favoriteListAdd} />
       </Route>
-      <Route path='/favorites'>
-        <Favorites setMovieData={setMovieData} favoriteList={favoriteList} />
-      </Route>
       <Route path='/profile'>
         <Profile
-          changeAvatarPopup={changeAvatarPopup}
-          avatarPopup={avatarPopup}
-          userAvatar={userAvatar}
-          setNewAvatarPath={setNewAvatarPath}
-          newAvatarPath={newAvatarPath}
-          changeAvatar={changeAvatar}
-          newUsername={newUsername}
-          setNewUsername={setNewUsername}
-          username={username}
-          usernamePopup={usernamePopup}
-          changeUsername={changeUsername}
-          changeUsernamePopup={changeUsernamePopup}
+          profileActions={profileActions}
         />
       </Route>
 

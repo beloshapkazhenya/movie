@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import './Profile.scss';
 
-import edit from './../../assets/img/edit.svg'
 
 const Avatar = ({ userAvatar, changeAvatarPopup }) => {
     const [avatar, setAvatar] = useState(userAvatar)

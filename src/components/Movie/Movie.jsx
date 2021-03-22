@@ -6,12 +6,12 @@ import inFavorites from './../../assets/img/infavorites.svg'
 
 import './Movie.scss';
 
-const Movie = ({ description, favoriteListAdd }) => {
+const Movie = ({ description, favoriteListAction }) => {
     return (
         <div className='movie-app__movie-description-field'>
             <div className='movie-app__movie-description-field__title'>
                 <h1>{description.Title}</h1>
-                <img className='in-favorite' onClick={() => favoriteListAdd(description)} src={inFavorites} alt="Favorite"></img>
+                <img className='in-favorite' onClick={() => favoriteListAction(description)} src={inFavorites} alt="Favorite"></img>
             </div>
 
             <div className='movie-app__movie-description-field__information'>

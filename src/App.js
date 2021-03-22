@@ -12,7 +12,7 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [response, setResponse] = useState('');
   const [searchPage, setSearchPage] = useState(1);
-  const [favoriteList, setFavoriteList] = useState([])
+
 
 
   const clearSearch = () => {
@@ -64,13 +64,27 @@ function App() {
   useEffect(() => {
     setSearchPage(1)
   }, [searchValue])
+
   //действия с избранным
-  let favoriteListAdd = (addMovie) => {
-    setFavoriteList([...favoriteList, addMovie])
+  const [favoriteList, setFavoriteList] = useState([])
+  const [favoriteListDate, setFavoriteListDate] = useState(localStorage.favoriteListDate ? localStorage.favoriteListDate.split(',') : [])
+  let favoriteListAction = (Movie) => {
+    setFavoriteListDate([...favoriteListDate, Movie.imdbID])
   }
+  console.log(favoriteList)
+  let favoriteListRefresh = () => {
+    favoriteListDate.map(movieID => (
+      API.getMovieById(movieID).then(data => (
+        setFavoriteList([...favoriteList, data])
+      ))))
+  }
+
+  useEffect(() => {
+    localStorage.setItem('favoriteListDate', favoriteListDate)
+    favoriteListRefresh()
+  }, [favoriteListDate])
+
   //данные профиля
-
-
   const [avatarPopup, setAvatarPopup] = useState(false);
   const [usernamePopup, setUsernamePopup] = useState(false);
 
@@ -140,7 +154,7 @@ function App() {
       {visibleSearch && <Search
         searchActions={searchActions} />}
       <Route path='/movie-description'>
-        <Movie description={movie} favoriteListAdd={favoriteListAdd} />
+        <Movie description={movie} favoriteListAction={favoriteListAction} />
       </Route>
       <Route path='/profile'>
         <Profile

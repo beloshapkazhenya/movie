@@ -8,6 +8,7 @@ import Avatar from './Avatar'
 
 
 const Profile = ({ profileActions }) => {
+    //console.log(profileActions.favoriteList)
     return (
         <div className='profile-page'>
             <div className='movie-app__profile'>

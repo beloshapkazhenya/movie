@@ -14,7 +14,6 @@ const Search = ({ searchActions }) => {
                         <img src={searchBtn} alt="Search" />
                     </button>
                 </div>
-
             </div>
             {searchActions.response && <SearchResult
                 setMovieData={searchActions.setMovieData}

@@ -4,13 +4,14 @@ import Logo from './../../assets/img/Logo.svg'
 
 import './Header.scss';
 
-const Header = ({ searchVisibilaty }) => {
+const Header = ({ searchVisibilaty, movieDescription }) => {
     return (
         <header className='movie-app__header'>
             <img src={Logo} alt='Movie library'></img>
-            <ul className='movie-app__header__menu'>
+            {movieDescription && <ul className='movie-app__header__menu'>
                 <li onClick={searchVisibilaty} className='movie-app__header__menu__menu-button'>Search</li>
-            </ul>
+            </ul>}
+
         </header>
     )
 }

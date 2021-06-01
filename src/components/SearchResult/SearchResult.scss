@@ -6,7 +6,8 @@
     position: absolute;
     margin-top: 60px;
     padding: 5px 20px;
-    z-index: 2;
+    z-index: 1;
+    animation: emergence 0.5s ease-in;
     .navigation {
         button {
             position: absolute;
@@ -56,5 +57,16 @@
         .navigation {
             visibility: hidden;
         }
+    }
+}
+
+@keyframes emergence {
+    from {
+        margin-top: 0px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 60px;
+        opacity: 1;
     }
 }

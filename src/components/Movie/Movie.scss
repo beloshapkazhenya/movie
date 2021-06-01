@@ -6,6 +6,7 @@
     font-size: 24px;
     line-height: 28px;
     margin: 0 30px;
+    animation: emergence 5s linear;
     &__title {
         display: flex;
         flex-direction: row;
@@ -195,5 +196,14 @@
             align-items: center;
             margin-bottom: 10px;
         }
+    }
+}
+
+@keyframes emergence {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

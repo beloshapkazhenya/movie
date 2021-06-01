@@ -5,13 +5,18 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        width: 100%;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%, -50%);
         height: 60px;
-        background: #010a26;
+        background: #f2f2f2;
         z-index: 2;
+        min-width: 370px;
         div {
             background-color: #5a6073;
             border-radius: 5px;
+            box-shadow: 0px 0px 5px 1px darken(#c1c7d9, 50%);
             &:hover {
                 box-shadow: 0px 0px 10px 3px darken(#c1c7d9, 50%);
             }
@@ -54,6 +59,20 @@
         }
     }
 }
+@media screen and (max-width: 900px) {
+    .movie-app__search {
+        &__search-field {
+            min-width: 390px;
+            input {
+                width: 250px;
+            }
+            &__btn {
+                font-size: 20px;
+                line-height: 40px;
+            }
+        }
+    }
+}
 @media screen and (max-width: 560px) {
     .movie-app__search {
         &__search-field {
@@ -71,6 +90,8 @@
 @media screen and (max-width: 400px) {
     .movie-app__search {
         &__search-field {
+            width: 100%;
+            min-width: 370px;
             input {
                 width: 230px;
             }
@@ -80,4 +101,73 @@
             }
         }
     }
+}
+@media screen and (max-width: 370px) {
+    .movie-app__search {
+        &__search-field {
+            width: 100%;
+
+            input {
+                padding-left: 5px;
+                width: 230px;
+            }
+            &__btn {
+                font-size: 20px;
+                line-height: 40px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 330px) {
+    .movie-app__search {
+        &__search-field {
+            width: 100%;
+            min-width: min-content;
+            transform: translate(-50%, -50%);
+            input {
+                width: 220px;
+            }
+            &__btn {
+                font-size: 20px;
+                line-height: 40px;
+            }
+        }
+    }
+}
+@keyframes searchActive {
+    from {
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        top: 60px;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, 0);
+        background: #010a26;
+    }
+    to {
+        top: 60px;
+        left: 0;
+        width: 100%;
+        transform: translate(0, 0);
+        background: #010a26;
+    }
+}
+.search-active {
+    top: 60px;
+    left: 0;
+    width: 100%;
+    transform: translate(0, 0);
+    background: #010a26;
+}
+.search-active-animation {
+    top: 60px;
+    left: 0;
+    width: 100%;
+    transform: translate(0, 0);
+    background: #010a26;
+    animation: searchActive 0.3s ease-in;
 }

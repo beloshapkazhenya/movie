@@ -73,10 +73,10 @@ function App() {
 
   return (
     <div className="movie-app">
-      <Header searchVisibilaty={searchVisibilaty} clearSearch={clearSearch} />
+      <Header searchVisibilaty={searchVisibilaty} clearSearch={clearSearch} movieDescription={!!movie} />
       {visiblePopup && <Popup popupVisibilaty={popupVisibilaty} />}
       {visibleSearch && <Search
-        searchActions={searchActions} />}
+        searchActions={searchActions} movieDescription={!!movie} />}
       <Movie description={movie} />
     </div>
   );
